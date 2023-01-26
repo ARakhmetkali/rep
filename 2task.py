@@ -1,6 +1,8 @@
 a = input()
 b = a[::-1]
-if a == b :
+while a == b :
     print("true")
-elif a != b :
-    print("false")
+    break
+while a!= b :
+    print("False")
+    break
