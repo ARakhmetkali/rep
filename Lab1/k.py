@@ -31,7 +31,8 @@ elif a > b:
 else:
     print("3")
 
-
+c = 10
+d = 10
 #and
 if a == b and c == d:
     print("Hello")
