@@ -10,6 +10,7 @@ if "apple" in fruits:
 #2. add element( not append)
 fruits = {"apple", "banana", "cherry"}
 fruits.add("orange")
+print(fruits)
 
 
 #3. method to add multiple items (more_fruits) to the fruits set(update).
