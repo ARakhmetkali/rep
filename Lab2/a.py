@@ -33,7 +33,7 @@ print(fruits[-1])
 
 #7.  range of index
 fruits = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
-print(print(fruits[2:5]))
+print(fruits[2:5])
 
 
 #8.  number of items( len() )
