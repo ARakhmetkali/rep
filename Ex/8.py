@@ -1,16 +1,15 @@
-def spy_game(nums):
-    for i in nums:
-        if i == 7:
-            num = nums[:nums.index(i)]
-    if len(num) == len(nums):
-        return False
-    cnt = 0
-    for j in num:
-        if j == 0:
-            cnt += 1
-    if cnt >= 2:
-        return True
-    else:
+def spy_game(nums): 
+    l=0  
+    index = 0 
+    for i in range(len(nums)): 
+        if nums[i]==7: 
+            index = i 
+    for i in range(index): 
+        if nums[i]==0: 
+            l+=1   
+    if(l>=2):      
+        return True 
+    else: 
         return False
 
 print(spy_game([1,2,4,0,0,7,5]))
