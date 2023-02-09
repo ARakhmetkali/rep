@@ -9,10 +9,10 @@ class Shape(object):
 class Square(Shape):
     def __init__(self, l):
         Shape.__init__(self)
-        self.length = l
+        self.l = l
 
     def area(self):
-        return self.length * self.length
+        return self.l * self.l
 
 
 aSquare = Square(3)
