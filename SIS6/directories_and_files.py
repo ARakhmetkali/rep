@@ -98,7 +98,7 @@ def main():
     checkPath(path)
 
     print('Task 3')
-    existAndRetrivePathInfo('../tsis5/justsample.py')
+    existAndRetrivePathInfo('../SIS5/RegEx.py')
 
     print('Task 4')
     print(f'Number of lines in a file demofile.txt = {countLines("demofile.txt")}')
