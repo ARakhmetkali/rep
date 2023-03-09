@@ -1,6 +1,7 @@
 
 import pathlib
 import os
+import os.path
 from string import ascii_uppercase
 
 # task 1
@@ -81,7 +82,7 @@ def copyContent(init_filename, target_filename):
 
 # task 8
 def deleteFile(p):
-    if os.path.exist(p):
+    if os.path.exists(p):
         os.remove(p)
         print('Successfully deleted the file')
     else:
@@ -113,7 +114,7 @@ def main():
     copyContent('demofile.txt', 'demofile3.txt')
 
     print('Task 8')
-    deleteFile('./demofile2.txt')
+    deleteFile('./were.txt')
 
 if __name__ == '__main__':
     main()
