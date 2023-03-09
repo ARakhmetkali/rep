@@ -38,14 +38,14 @@ l = "Qwerty"
 print(upper_lower_case(l))
 
 #3
-s = "qwq"
+s = "qwqw"
 print(palindrome(s))
 
 #4
-d = 12344
-k = 12311
+d = 12
+k = 1231
 print(wait_before_invoke(d,k))
 
 #5
-a = (5,2,0,"awd")
+a = (5,2,"awd")
 print(tuple_elements(a))
