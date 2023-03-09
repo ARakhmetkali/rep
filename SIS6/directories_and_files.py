@@ -1,92 +1,119 @@
+
+import pathlib
 import os
+from string import ascii_uppercase
 
-path = "D:\\Desktop\\KBTU_PP2" 
+# task 1
+def listDirs(p):
+    print([x.name for x in os.scandir(path = p) if x.is_dir()])
 
-def directorites():
-    # List only directories
-    print("Directories:")
-    for dir in os.listdir(path):
-        if os.path.isdir(os.path.join(path, dir)):
-            print(dir)
-    
-    # List only files
-    print("\nFiles:")
-    for file in os.listdir(path):
-        if os.path.isfile(os.path.join(path, file)):
-            print(file)
-    
-    # List all directories and files
-    print("\nAll directories and files:")
-    for item in os.listdir(path):
-        print(item)
 
-def Accessing():
-    # Check if path exists
-    if os.path.exists(path):
-        print(f"{path} exists")
+def listFiles(p):
+    print([x.name for x in os.scandir(path = p) if x.is_file()])
 
-    # Check if path is readable
-        if os.access(path, os.R_OK):
-            print(f"{path} is readable")
-        else:
-            print(f"{path} is not readable")
 
-    # Check if path is writable
-        if os.access(path, os.W_OK):
-            print(f"{path} is writable")
-        else:
-            print(f"{path} is not writable")
+def listDirsAndFiles(p):
+    print([x.name for x in os.scandir(path = p)])
 
-    # Check if path is executable
-        if os.access(path, os.X_OK):
-            print(f"{path} is executable")
-        else:
-            print(f"{path} is not executable")
+
+# task 2
+def checkPath(p):
+    exist_status = os.access(path = p, mode = os.F_OK)
+    print(f'Existance : {exist_status}')
+    read_status = os.access(path = p, mode = os.R_OK)
+    print(f'Radibility : {read_status}')
+    write_status = os.access(path = p, mode = os.W_OK)
+    print(f'Writability : {write_status}')
+    exec_status = os.access(path = p, mode = os.X_OK)
+    print(f'Executability : {exec_status}')
+
+# task 3
+def existAndRetrivePathInfo(p):
+    exist_status = os.access(path = p, mode = os.F_OK)
+    if exist_status:
+        print(f'File : {os.path.basename(p)}')
+        print(f'Directory : {os.path.dirname(p)}')
     else:
-        print(f"{path} does not exist")
+        print('Path is not executable')
 
-def Existance():
-    if os.path.exists(path):
-        print(f"{path} exists")
 
-    # Get the directory portion of the path
-        directory = os.path.dirname(path)
-        print(f"The directory portion of {path} is {directory}")
+# task 4
+def countLines(filename):
+    file = open(filename, 'r')
+    count = 0
+    for line in file:
+        count += 1
+    return count
 
-    # Get the filename portion of the path
-        filename = os.path.basename(path)
-        print(f"The filename portion of {path} is {filename}")
+
+# task 5
+def writeToFile(filename, new_list):
+    file = open(filename, 'a')
+    file.write(str(new_list))
+    file.close()
+
+    file = open(filename , 'r')
+    print(file.read())
+
+
+# task 6
+def generateFiles():
+    for char in ascii_uppercase:
+        file = open(f'./files/{char}.txt', 'x')
+        file.close()
+
+
+# task 7
+def copyContent(init_filename, target_filename):
+    init_file = open(init_filename, 'r')
+    file_content = init_file.read()
+    init_file.close()
+
+    target_file = open(target_filename, 'w')
+    target_file.write(str(file_content))
+    target_file.close()
+    print('Successfully copied')
+
+    target_file = open(target_filename, 'r')
+    print(target_file.read())
+    target_file.close()
+
+
+# task 8
+def deleteFile(p):
+    if os.path.exist(p):
+        os.remove(p)
+        print('Successfully deleted the file')
     else:
-        print(f"{path} does not exist")
+        print('File does not exist')
 
-def number_of_lines():
-    path = "D:\\Desktop\\KBTU_PP2\\PP2\\lab5\\regex.py"
-    with open(path, "r", encoding="UTF-8") as f:
-       lines = f.readlines() # -> reads all lines  
-       print(len(lines))
+def main():
+    path = '..'
+    print('Task 1')
+    listDirs(path)
+    listFiles(path)
+    listDirsAndFiles(path)
 
-def write_list():
-    list_to_write = ["Java", "Python", "Golang"]
-    with open("text1.txt", "w", encoding="UTF-8") as f:
-        for item in list_to_write:
-            f.write(item + "\n")
-    with open("text1.txt", "r", encoding="UTF-8") as fi:
-        print(fi.read())
+    print('Task 2')
+    checkPath(path)
 
-def a_to_z():
-    for i in range(65,91):
-        with open(f"{chr(i)}.txt", "x") as _:
-            pass
+    print('Task 3')
+    existAndRetrivePathInfo('../tsis5/justsample.py')
 
-def copy_files():
-    with open("text1.txt", "r", encoding="UTF-8") as f:
-        content = f.read()
-    with open("copy.txt", "a", encoding="UTF-8") as fi:
-        fi.write(content)
+    print('Task 4')
+    print(f'Number of lines in a file demofile.txt = {countLines("demofile.txt")}')
 
-def delete():
-    path = ""
-    if os.path.exists(path) and os.access(path, os.R_OK) and os.access(path, os.W_OK):
-        os.remove(path)
-    else:
-        print("the file does not exist or you do not have permission")
+    print('Task 5')
+    writeToFile('demofile2.txt', ['Hello', 'World'])
+
+    print('Task 6')
+    #generateFiles()
+
+    print('Task 7')
+    copyContent('demofile.txt', 'demofile3.txt')
+
+    print('Task 8')
+    deleteFile('./demofile2.txt')
+
+if __name__ == '__main__':
+    main()
