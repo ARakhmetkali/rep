@@ -33,7 +33,7 @@ def date_diff(d2, d1):
 
 
 # Specified date
-date1 = datetime.strptime('2015-01-01 01:00:00', '%Y-%m-%d %H:%M:%S')
+date1 = datetime.strptime('2023-03-09 16:12:00', '%Y-%m-%d %H:%M:%S')
 # Current date
 date2 = datetime.now()
 print("\n%d seconds" % (date_diff(date2, date1)))

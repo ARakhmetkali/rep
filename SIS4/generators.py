@@ -1,5 +1,5 @@
 #1
-square = (i * i for i in range(int(input())))
+square = (i * i for i in range(int(input())+1))
 for i in square:
     print(i, end=" ")
 print("\n")
