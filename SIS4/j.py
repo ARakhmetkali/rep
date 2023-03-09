@@ -1,15 +1,17 @@
 import json
 
-with open('sample-data.json') as f:
-    data = json.load(f)
+# Load the JSON file
+with open("sample-data.json", "r") as file:
+    data = json.load(file)
 
-header = "Interface Status\n" + "=" * 80 + "\n"
-header += "{:<50}{:<25}{:<8}{}\n".format("DN", "Description", "Speed", "MTU")
-header += "-" * 80 + "\n"
+# Print the header
+print('Interface Status')
+print('='*80)
+print("DN", " " * 40, "Description"," " * 10, "Speed  ", "  MTU")
+print('-'*80)
 
-body = ""
-for interface in data["data"]:
-    body += "{:<50}{:<25}{:<8}{}\n".format(interface["DN"], interface["description"], interface["speed"],
-                                           interface["mtu"])
-
-print(header + body)
+# print the required atributes
+for imdata in data["imdata"]:
+    for i in imdata:
+        for j in imdata[i]:
+            print('{:<51}{:<15}{:<10}{}'.format(imdata[i][j]["dn"], imdata[i][j]["descr"], imdata[i][j]["speed"], imdata[i][j]["mtu"]))
