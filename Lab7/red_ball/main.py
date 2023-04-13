@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 SIZE = [800, 800]
 monitor = pygame.display.set_mode(SIZE)
-pygame.display.set_caption("ayan's game")
+pygame.display.set_caption("Ayan's game")
 
 radius = 50
 clock = pygame.time.Clock()
